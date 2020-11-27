@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="stylesheet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet"><!--social media icon library-->
+<title>Auction Countdown</title>
+<style>
+</style>
+</head>
+<body>
+<div id= "wrapper">
+<!-- Header -->
+  <header>
+    <div class= "logocontain"><a href="https://www.huntsvillescience.org/"><img class="logonav" src="images/HSVSF_Logo_RBG.png" alt="logo"></a></div>
+    <nav>
+ 	<a href="homepage.html">Home</a>
+	<a href="eventschedulepage.html">Event Schedule</a>
+	<a href="auctionpage.html">Auction</a>	
+    </nav>
+  </header>
+<!--	AuctimeCountdown -->
+<div class="AuctimeCountdown">
+  <h1 id="h1auction">Auction Starts In:</h1>
+  <div id="clockdiv">
+    <div> <span class="days"></span>
+      <div class="smalltext">Days</div>
+    </div>
+    <div> <span class="hours"></span>
+      <div class="smalltext">Hours</div>
+    </div>
+    <div> <span class="minutes"></span>
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div> <span class="seconds"></span>
+      <div class="smalltext">Seconds</div>
+    </div>
+  </div>
+  <script>
+	  function getTimeRemaining(endtime) {
+  const total = Date.parse(endtime) - Date.parse(new Date());
+  const seconds = Math.floor((total / 1000) % 60);
+  const minutes = Math.floor((total / 1000 / 60) % 60);
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+  
+  return {
+    total,
+    days,
+    hours,
+    minutes,
+    seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  const clock = document.getElementById(id);
+  const daysSpan = clock.querySelector('.days');
+  const hoursSpan = clock.querySelector('.hours');
+  const minutesSpan = clock.querySelector('.minutes');
+  const secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    const t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  const timeinterval = setInterval(updateClock, 1000);
+}
+	
+const deadline = 'November 1 2021 00:00:00';
+initializeClock('clockdiv', deadline);
+</script> 
+</div>
+<!--	Auction Items-->
+<div class="AuctionItems">
+  <div class="AuctionItemGrid">
+    <div class="a1"> <img class= "auctionimg" src="img for auction page/resized/1.png" alt="Item 1"></div>
+	  <div class="b1"> <a href="https://ebay.com" class= "button2">Bid on Item</a> </div>
+	<div class="a2"> <img class= "auctionimg" src="img for auction page/resized/2.png" alt="Item 2"></div>
+	  <div class="b2"> <a href="https://ebay.com" class= "button2">Bid on Item</a></div>
+	<div class="a3"> <img class= "auctionimg" src="img for auction page/umanoide-cYNF1EdbMJk-unsplash.jpg" alt="Item 3"></div>
+	  <div class="b3"> <a href="https://ebay.com" class= "button2">Bid on Item</a></div>
+	<div class="a4"> <img class= "auctionimg" src="img for auction page/resized/4.jpg" alt="Item 4"></div>
+	  <div class="b4"> <a href="https://ebay.com" class= "button2">Bid on Item</a></div>
+	<div class="a5"> <img class= "auctionimg" src="img for auction page/resized/5.jpg" alt="Item 5"></div>
+	  <div class="b5"> <a href="https://ebay.com" class= "button2">Bid on Item</a></div>
+	<div class="a6"> <img class= "auctionimg" src="img for auction page/resized/6.jpg" alt="Item 6"></div>
+	  <div class="b6"> <a href="https://ebay.com" class= "button2">Bid on Item</a></div>
+  </div>
+</div>
+	<!-- Footer -->
+	<footer class="social-footer">
+	  <div class="social-footer-left">
+		<a href="https://www.huntsvillescience.org/"> <img class="logo2" src="images/HSVSF_Logo_RBG.png" alt="Logo2"> </a>
+	  </div>
+	  <div class="social-footer-icons">
+		<ul class="socialmediafooter">
+		<li><a href="mailto:huntsvillescience@gmail.com" class="fa fa-envelope"></a></li>
+		  <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+		  <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+		  <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+		<li><a href="https://www.youtube.com/channel/UC72faoZEFO4VC4l4BLdpX4w" class="fa fa-youtube"></a></li>
+		</ul>
+	  </div>	
+	</footer>
+</div>
+</body>
+</html>
